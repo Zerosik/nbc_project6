@@ -1,30 +1,32 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "RotatingActor.generated.h"
+#include "PendulumActor.generated.h"
 
 UCLASS()
-class HOMEWORK6_API ARotatingActor : public AActor
+class HOMEWORK6_API APendulumActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-	ARotatingActor();
-	UPROPERTY(EditAnywhere, Category = "Rotate", meta = (Tooltip = "ÃÊ´ç È¸Àü ¼ö"))
-	float RotatePerSecond;
+	APendulumActor();
 
 	UPROPERTY(EditAnywhere, Category = "Components")
 	USceneComponent* SceneRoot;
 	UPROPERTY(EditAnywhere, Category = "Components")
 	UStaticMeshComponent* StaticMeshComp;
 
-private:
-	float RotateAngle = 360.f;
 
+	UPROPERTY(EditInstanceOnly, Category = "Pendulum")
+	float MaxAngle;
+	UPROPERTY(EditInstanceOnly, Category = "Pendulum")
+	float SwingSpeed;
+
+	float defaultYaw;
+	float timeElapsed;
 
 protected:
 	virtual void BeginPlay() override;
